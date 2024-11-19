@@ -1,36 +1,33 @@
-// tp pair-programming, duo: Hippolyte Millé et Andréas Rey Malissein
-#include <iostream>
 #include "Rover.hpp"
-#include <string>
 
-int main()
-{
-    Rover rover;
-    std::string commandes;
-    std::cout << "Entrez les commandes (f pour avancer, l pour tourner à gauche, r pour tourner à droite, b pour reculer) : ";
-    std::cin >> commandes;
-    int i = 0;
-    while (i < commandes.size())
-    {
-        switch (commandes[i])
-        {
-        case 'f':
-            rover.moveForward();
-            break;
-        case 'b':
-            rover.moveBackward();
-            break;
-        case 'l':
-            rover.turnLeft();
-            break;
-        case 'r':
-            rover.turnRight();
-            break;
-        default:
-            break;
-        }
-        i++;
+int main() {
+  Grid grid(100);
+  Rover rover(grid);
+
+  std::string commandes;
+  std::cout << "Entrez les commandes (f pour avancer, l pour tourner à gauche, "
+               "r pour tourner à droite, b pour reculer) : ";
+  std::cin >> commandes;
+
+  for (char command : commandes) {
+    switch (command) {
+    case 'f':
+      rover.moveForward();
+      break;
+    case 'b':
+      rover.moveBackward();
+      break;
+    case 'l':
+      rover.turnLeft();
+      break;
+    case 'r':
+      rover.turnRight();
+      break;
+    default:
+      break;
     }
-    rover.display();
-    return 0;
+  }
+  rover.display();
+
+  return 0;
 }
